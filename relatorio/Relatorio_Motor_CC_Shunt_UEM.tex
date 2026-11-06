@@ -85,7 +85,7 @@
 }
 
 % --- Informações de Capa e Folha de Rosto (Contra Capa) ---
-\titulo{Motor CC shunt de 1,5 HP com controle de velocidade e torque}
+\titulo{Motor CC shunt com controle de velocidade e torque}
 \autor{Antonio Nicolas Irmani\\
         João Marcos Conti Checom\\
         Juan Antonio Marques Fogaça de Oliveira\\
@@ -144,7 +144,7 @@
         \vspace*{4.5cm} % Espaçamento vertical até o título
         
         % --- Título do Trabalho ---
-        \textbf{\large{Motor CC shunt de 1,5 HP com controle de velocidade e torque}}
+        \textbf{\large{Motor CC shunt com controle de velocidade e torque}}
         
         \vfill % Este comando empurra automaticamente o bloco abaixo para o limite inferior da página
         
@@ -218,27 +218,181 @@
 
 \chapter{FUNDAMENTAÇÃO TEÓRICA}
 \section{Princípio de funcionamento do motor CC shunt}
-\FALTA{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
-\section{Estrutura e componentes do motor CC shunt}
-\FALTA{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
-\section{Excitação em derivação (shunt) e circuito de campo}
-\FALTA{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
-\section{Força contraeletromotriz e conjugado eletromagnético}
-\FALTA{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
-\section{Equações de regime permanente do motor shunt}
-\FALTA{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
-\section{Comutação, escovas e comutador}
-\FALTA{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
-\section{Enrolamento imbricado da armadura}
-\FALTA{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
-\section{Enrolamento imbricado simplex e caminhos paralelos}
-\FALTA{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
-\section{Enrolamento imbricado progressivo}
-\FALTA{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
+Os motores de corrente contínua são máquinas elétricas responsáveis pela conversão de energia elétrica em energia mecânica de rotação. Seu funcionamento baseia-se na interação entre o campo magnético produzido pelo estator e a corrente elétrica que percorre os condutores da armadura, resultando no desenvolvimento de um conjugado eletromagnético capaz de movimentar o eixo da máquina.
 
+No motor CC com excitação em derivação, denominado motor shunt, o enrolamento de campo é conectado em paralelo com o circuito da armadura. Essa configuração permite que ambos sejam submetidos à mesma tensão terminal, embora apresentem correntes distintas, determinadas pelas características elétricas de cada circuito.
+
+Durante o funcionamento, a passagem de corrente pelos condutores da armadura, submetidos ao campo magnético estabelecido pelos polos do estator, produz forças eletromagnéticas que dão origem ao movimento de rotação. O comutador e as escovas realizam a comutação das correntes nos condutores, permitindo a manutenção de um conjugado resultante no sentido desejado.
+
+Conforme apresentado no material didático da disciplina, os motores CC possibilitam o controle da velocidade e do conjugado, características que fundamentam sua utilização em sistemas de acionamento eletromecânico.
+\section{Estrutura e componentes do motor CC shunt}
+A estrutura de um motor CC shunt é constituída por componentes elétricos, magnéticos e mecânicos responsáveis pela produção do fluxo magnético, pela circulação de corrente na armadura e pela transmissão do movimento de rotação.
+
+O estator corresponde à parte estacionária da máquina e abriga o sistema de polos magnéticos e o enrolamento de campo. No motor shunt, a corrente que percorre esse enrolamento estabelece o fluxo magnético necessário à conversão eletromecânica de energia.
+
+O rotor, também denominado induzido ou armadura, constitui a parte girante da máquina. Em sua estrutura são alojados os condutores e as bobinas do enrolamento de armadura, distribuídos nas ranhuras do núcleo.
+
+O comutador é formado por segmentos condutores eletricamente isolados entre si e conectados às extremidades das bobinas da armadura. As escovas estabelecem o contato elétrico entre o circuito externo e o comutador, permitindo a transferência de corrente durante a rotação.
+
+Para o protótipo desenvolvido, considera-se uma configuração construtiva composta por dois polos magnéticos, oito ranhuras no rotor e oito segmentos no comutador. Esses parâmetros constituem as características previstas do projeto e serão considerados no dimensionamento e na distribuição do enrolamento.
+\section{Excitação em derivação (shunt) e circuito de campo}
+A principal característica elétrica do motor CC shunt é a conexão do enrolamento de campo em paralelo com a armadura. Dessa forma, a corrente total fornecida pela alimentação é dividida entre o circuito de campo e o circuito de armadura.
+
+A relação entre essas correntes é expressa por:
+\begin{equation}
+I_L = I_a + I_f
+\label{corrente_total}
+\end{equation}
+
+Em que:
+\begin{itemize}
+    \item $I_L$ é a corrente total fornecida pela fonte de alimentação;
+    \item $I_a$ é a corrente que percorre o circuito da armadura;
+    \item $I_f$ é a corrente que percorre o circuito de campo.
+\end{itemize}
+
+Considerando o circuito de campo em regime permanente, a corrente de excitação pode ser determinada por:
+\begin{equation}
+I_f = \frac{V_T}{R_f}
+\label{corrente_campo}
+\end{equation}  
+
+Sendo $V_T$ a tensão aplicada ao circuito de campo e $R_f$ a resistência equivalente desse circuito.
+
+Quando a tensão terminal e a resistência de campo permanecem aproximadamente constantes, a corrente de excitação também tende a permanecer constante. Consequentemente, desconsiderando os efeitos de saturação e de reação da armadura, o fluxo magnético por polo pode ser considerado aproximadamente constante.
+
+Essa condição é importante para a análise do comportamento eletromecânico do motor shunt, pois permite relacionar diretamente a corrente de armadura ao conjugado desenvolvido e a tensão de armadura à velocidade de rotação.
+
+\section{Força contraeletromotriz e conjugado eletromagnético}
+Durante a rotação da armadura, os condutores movimentam-se em relação ao campo magnético estabelecido pelo estator, ocasionando a indução de uma força eletromotriz interna.
+
+No funcionamento como motor, essa tensão induzida apresenta polaridade contrária à tensão responsável pela circulação da corrente de armadura, sendo denominada força contraeletromotriz.
+
+Sua expressão é dada por:
+\begin{equation}
+E_a = K_a \cdot \Phi \cdot \omega_m
+\label{fcem}
+\end{equation}
+
+Em que $E_a$ representa a força contraeletromotriz, $K_a$ a constante construtiva da máquina, $\Phi$ o fluxo magnético por polo e $\omega_m$ a velocidade angular do rotor.
+
+A expressão demonstra que, para um fluxo magnético aproximadamente constante, a força contraeletromotriz aumenta proporcionalmente à velocidade de rotação.
+
+O conjugado eletromagnético desenvolvido pela máquina é representado por:
+\begin{equation}
+T_{ind} = K_a \cdot \Phi \cdot I_a
+\label{conjugado}
+\end{equation}
+
+Nessa equação, $T_{ind}$ corresponde ao conjugado eletromagnético induzido e $I_a$ à corrente de armadura.
+
+Assim, para um motor shunt operando com fluxo magnético aproximadamente constante, o conjugado desenvolvido é diretamente proporcional à corrente de armadura. Quando a carga mecânica aplicada ao eixo aumenta, o motor tende a solicitar maior corrente de armadura para desenvolver o conjugado necessário ao novo ponto de operação.
+
+\section{Equações de regime permanente do motor shunt}
+O comportamento elétrico do motor CC shunt em regime permanente pode ser analisado por meio da aplicação da lei das tensões de Kirchhoff ao circuito da armadura.
+
+Desconsiderando inicialmente a queda de tensão nas escovas, obtém-se:
+\begin{equation}
+V_T = E_a + I_a \cdot R_a
+\label{tensao_armadura}
+\end{equation}
+
+Em que $R_a$ representa a resistência elétrica equivalente da armadura.
+
+Isolando a corrente de armadura:
+\begin{equation}
+I_a = \frac{V_T - E_a}{R_a}
+\label{corrente_armadura}
+\end{equation}
+
+Substituindo a expressão da força contraeletromotriz na equação de tensão, obtém-se a relação entre velocidade, tensão terminal, corrente e fluxo magnético:
+\begin{equation}
+\omega_m = \frac{V_T - I_a \cdot R_a}{K \cdot \Phi}
+\label{velocidade}
+\end{equation}
+
+Essa relação representa, sob as hipóteses adotadas, uma característica aproximadamente linear e decrescente entre velocidade e conjugado eletromagnético.
+
+\section{Comutação, escovas e comutador}
+A comutação constitui um processo fundamental para o funcionamento das máquinas de corrente contínua. Sua finalidade é modificar as conexões elétricas das bobinas da armadura à medida que o rotor se desloca em relação aos polos magnéticos.
+
+O comutador é composto por segmentos condutores conectados às extremidades das bobinas e isolados eletricamente entre si. Durante a rotação, as escovas mantêm contato com esses segmentos, estabelecendo a ligação elétrica entre o circuito externo e os enrolamentos do rotor.
+
+À medida que determinada bobina atravessa a região de comutação, ocorre a alteração do sentido da corrente que a percorre. Esse processo permite que o conjugado eletromagnético resultante continue atuando no sentido de rotação estabelecido.
+
+No protótipo em estudo, o comutador será constituído por oito segmentos. Sua organização elétrica deverá ser compatível com a distribuição das bobinas nas oito ranhuras do rotor e com o enrolamento imbricado simplex progressivo previsto para a armadura.
+\section{Enrolamento imbricado da armadura}
+O enrolamento da armadura corresponde ao conjunto de bobinas distribuídas nas ranhuras do rotor e interligadas aos segmentos do comutador.
+
+Nos enrolamentos imbricados, as conexões são estabelecidas entre bobinas sucessivas, de modo que suas extremidades sejam associadas a segmentos próximos do comutador.
+
+Conforme apresentado nos slides da disciplina, uma das características utilizadas na classificação desses enrolamentos é o passo do comutador, representado por \(y_c\). Esse parâmetro corresponde à distância, expressa em número de segmentos, entre os pontos de conexão das extremidades de uma bobina.
+
+A escolha da configuração do enrolamento influencia a quantidade de caminhos paralelos disponíveis para a circulação da corrente de armadura e, consequentemente, as características elétricas da máquina.
+
+Para o projeto proposto, será considerado um enrolamento imbricado simplex progressivo, compatível com a configuração de dois polos magnéticos e com a disposição prevista para o rotor.
+\section{Enrolamento imbricado simplex e caminhos paralelos}
+O enrolamento imbricado simplex é caracterizado pela existência de um único conjunto contínuo de bobinas interconectadas na armadura.
+
+Nessa configuração, o passo do comutador possui módulo unitário. Para a ligação progressiva, o terminal final de uma bobina é conectado ao segmento imediatamente seguinte àquele em que seu terminal inicial está conectado.
+
+Assim:
+\begin{equation}
+y_c = +1
+\end{equation}
+
+A quantidade de caminhos paralelos de corrente em um enrolamento imbricado pode ser expressa por:
+\begin{equation}
+a = m \cdot p
+\end{equation}
+
+Em que $a$ corresponde ao número de caminhos paralelos, $m$ à multiplexidade do enrolamento e $P$ ao número de polos magnéticos.
+
+Considerando um enrolamento simplex, tem-se $m=1$. Para a máquina de dois polos prevista no projeto:
+\begin{equation}
+a = 1 \cdot 2 = 2
+\end{equation}
+
+Portanto, o enrolamento imbricado simplex da armadura apresenta dois caminhos paralelos de corrente.
+
+Essa característica é relevante para a análise da distribuição da corrente nos condutores da armadura e para o dimensionamento elétrico do motor.
+\section{Enrolamento imbricado progressivo}
+O enrolamento imbricado progressivo é caracterizado pela conexão sucessiva das bobinas aos segmentos seguintes do comutador, segundo o sentido adotado para a numeração.
+
+No caso de um enrolamento simplex progressivo, cada bobina possui suas extremidades conectadas a segmentos adjacentes, obedecendo ao passo do comutador $y_c=+1$.
+
+Considerando o comutador de oito segmentos previsto para o protótipo, a sequência de conexões pode ser representada da seguinte forma:
+\begin{table}[H]
+    \centering
+    \caption{Sequência de conexões do enrolamento
+    imbricado simplex progressivo}
+    \label{tab:enrolamento}
+
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Bobina} &
+        \textbf{Segmento inicial} &
+        \textbf{Segmento final} \\
+        \hline
+        1 & 1 & 2 \\ \hline
+        2 & 2 & 3 \\ \hline
+        3 & 3 & 4 \\ \hline
+        4 & 4 & 5 \\ \hline
+        5 & 5 & 6 \\ \hline
+        6 & 6 & 7 \\ \hline
+        7 & 7 & 8 \\ \hline
+        8 & 8 & 1 \\ \hline
+    \end{tabular}
+
+    \vspace{0.2cm}
+    \par\small Fonte: Elaborado pelos autores (2026).
+\end{table}
+Essa representação descreve a sequência de conexões entre as bobinas e os segmentos do comutador, formando um enrolamento fechado.
+
+Entretanto, a determinação da distribuição física das bobinas nas ranhuras exige considerar os passos do enrolamento e a disposição dos condutores no rotor. Portanto, a sequência apresentada não substitui o diagrama desenvolvido do enrolamento.
 \chapter{CARACTERÍSTICAS E DIMENSIONAMENTO DO MOTOR}
 \section{Definição da configuração construtiva shunt}
-\FALTA{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
+\text{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
 \section{Sistema magnético de dois polos}
 \FALTA{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
 \section{Rotor com oito ranhuras}
