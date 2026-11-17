@@ -5,7 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{helvet} % Fonte Arial/Helvetica
 \renewcommand{\familydefault}{\sfdefault} % Define a fonte sem serifa como padrão
-\usepackage{graphicx}
+\usepackage{graphicx} 
 \usepackage{microtype}
 \usepackage{multirow}
 \usepackage{rotating}
@@ -390,6 +390,27 @@ Considerando o comutador de oito segmentos previsto para o protótipo, a sequên
 Essa representação descreve a sequência de conexões entre as bobinas e os segmentos do comutador, formando um enrolamento fechado.
 
 Entretanto, a determinação da distribuição física das bobinas nas ranhuras exige considerar os passos do enrolamento e a disposição dos condutores no rotor. Portanto, a sequência apresentada não substitui o diagrama desenvolvido do enrolamento.
+
+\section{Circuito Integrado NE555}
+
+O NE555, comumente conhecido como timer 555, é um dispositivo de circuito integrado criado pelo engenheiro suíço Hans Rudolph Camenzind em 1971.
+
+Esse CI analógico-digital foi amplamente usado na indústria antes da popularização dos microcontroladores e circuitos digitais, sendo capaz de gerar oscilações e atrasos de tempo de maneira muito precisa, com a possibilidade de se controlar o período da oscilação e seu "duty-cycle".
+
+Atualizado ao longo do tempo, o mesmo pode ser encontrado em diversos tipos de encapsulamento, todos em configurações de 8 pinos, sendo eles PDIP, SOIC e VSSOP.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{imagens/pinout_mspaint.png}%
+    \caption{Pinout para NE555.}
+\end{figure}
+
+Para os propósitos deste projeto, optamos por usar seu formato PDIP, Plastic Dual In-line Package (ou Encapsulamento plástico de duas fileiras de terminais), que é o mais comum e pode ser facilmente soldado a placas de desenvolvimento.
+
+Em seu modo oscilador, usamos o timer para gerar um sinal PWM, isso é, um sinal modulado por largura de pulso, isso é feito através de um arranjo engenhoso de diodos, e um potenciômetro, que juntos são ligados a um capacitor, a fim de controlar a velocidade com a qual o mesmo é carregado ou descarregado.
+
+Dessa maneira, a tensão variante nesse capacitor é usada como gatilho para o oscilador, gerando um sinal de onda quadrada PWM, onde o potenciômetro é usado para mudar a frequência e a velocidade com que se carrega ou descarrega esse capacitor, modulando o pulso; esse método de operação é descrito e demonstrado oficialmente na documentação, ou "datasheet", do próprio dispositivo.
+
 \chapter{CARACTERÍSTICAS E DIMENSIONAMENTO DO MOTOR}
 \section{Definição da configuração construtiva shunt}
 \text{Desenvolver esta seção com fundamentação, cálculos, diagramas e/ou evidências aplicáveis.}
